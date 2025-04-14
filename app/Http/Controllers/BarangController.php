@@ -7,12 +7,29 @@ use App\Models\Barang;
 
 class BarangController extends Controller
 {
-    // Tampilkan semua barang
-    public function index()
+    // Tampilkan semua barang + fitur search dan filter kategori
+    public function index(Request $request)
     {
-        $barangs = Barang::all(); // Ambil semua data barang
-        return view('barangs.index', compact('barangs')); // Kirim data barang ke view
-    }    
+        $query = Barang::query();
+
+        // Fitur pencarian nama barang
+        if ($request->filled('search')) {
+            $query->where('nama_barang', 'like', '%' . $request->search . '%');
+        }
+
+        // Fitur filter berdasarkan kategori
+        if ($request->filled('kategori')) {
+            $query->where('kategori', $request->kategori);
+        }
+
+        // Ambil semua data hasil filter/search
+        $barangs = $query->get();
+
+        // Ambil daftar kategori unik untuk dropdown filter
+        $kategoriList = Barang::select('kategori')->distinct()->pluck('kategori');
+
+        return view('barangs.index', compact('barangs', 'kategoriList'));
+    }
 
     // Tampilkan form tambah barang
     public function create()
@@ -30,12 +47,12 @@ class BarangController extends Controller
             'harga' => 'required|numeric',
         ]);
 
-        Barang::create($request->all());
+        Barang::create($request->except('_token'));
 
         return redirect()->route('barangs.index')->with('success', 'Barang berhasil ditambahkan!');
     }
 
-    // Tampilkan detail satu barang (opsional)
+    // Tampilkan detail satu barang
     public function show($id)
     {
         $barang = Barang::findOrFail($id);
@@ -43,7 +60,6 @@ class BarangController extends Controller
     }
 
     // Tampilkan form edit barang
-// Menampilkan form edit barang
     public function edit($id)
     {
         $barang = Barang::findOrFail($id);
@@ -61,11 +77,10 @@ class BarangController extends Controller
         ]);
 
         $barang = Barang::findOrFail($id);
-        $barang->update($request->all());
+        $barang->update($request->except('_token'));
 
         return redirect()->route('barangs.index')->with('success', 'Barang berhasil diperbarui!');
     }
-
 
     // Hapus barang
     public function destroy($id)

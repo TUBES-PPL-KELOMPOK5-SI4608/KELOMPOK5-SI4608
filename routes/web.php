@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BarangController;
 
 Route::resource('barangs', BarangController::class);
+Route::get('/barangs', [BarangController::class, 'index'])->name('barangs.index');
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
