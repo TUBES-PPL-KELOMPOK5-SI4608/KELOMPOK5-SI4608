@@ -4,11 +4,16 @@
 <div class="w-full max-w-md p-8 space-y-6 bg-white shadow-md rounded-lg">
     <h2 class="text-2xl font-bold text-center text-gray-800">Login</h2>
 
-    @if (session('error'))
-        <div class="text-red-600 text-sm text-center">
-            {{ session('error') }}
-        </div>
-    @endif
+    @if ($errors->any())
+    <div class="text-red-600 text-sm text-center">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>* {{ $error }} *</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 
     <form action="{{ route('login') }}" method="POST" class="space-y-4">
         @csrf
