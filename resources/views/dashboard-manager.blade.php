@@ -1,3 +1,5 @@
+@extends('components')
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +10,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <!-- Add Noto Sans font -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <style>
+    <!-- <style>
         body {
             font-family: 'Noto Sans', sans-serif;  /* Apply Noto Sans font */
             background-color: #FBFAF5;  /* Set background color to FBFAF5 */
@@ -72,12 +74,12 @@
         .footer a {
             color: white;
         }
-    </style>
+    </style> -->
 </head>
 <body>
 
     <!-- Sidebar -->
-    <div class="sidebar">
+    <!-- <div class="sidebar">
         <ul class="nav flex-column">
             <li class="nav-item">
                 <a class="nav-link active" href="{{ route('dashboard-manager') }}">
@@ -98,11 +100,11 @@
                 <a class="nav-link" href="#">
                     <i class="fas fa-file-alt"></i> Laporan
                 </a>
-            </li>
+            </li> -->
             <!-- Spacer for visual organization -->
-            <div style="flex-grow: 1;"></div> <!-- Push items below -->
+            <!-- <div style="flex-grow: 1;"></div> Push items below -->
 
-            <li class="nav-item profile">
+            <!-- <li class="nav-item profile">
                 <a class="nav-link" href="#">
                     <i class="fas fa-user"></i> Profil
                 </a>
@@ -118,20 +120,21 @@
                 </a>
             </li>
         </ul>
-    </div>
+    </div> -->
 
     <!-- Main Content -->
-    <div class="main-content">
+    <!-- <div class="main-content"> -->
         <!-- Header -->
-        <div class="header">
+        <!-- <div class="header">
             <h1>Welcome, {{ Auth::user()->name }}</h1>
             <div>
                 <span class="date-time" id="current-date-time"></span>
                 <i class="fas fa-bell notifications"></i>
             </div>
-        </div>
+        </div> -->
 
         <!-- Data Summary -->
+        @section('content')
         <div class="container mt-5">
             <h3>Data Summary</h3>
             <div class="row">
@@ -180,23 +183,8 @@
             <canvas id="salesTrendChart" width="400" height="200"></canvas>
         </div>
     </div>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <p>Company Name - 123 Address St, City, Country</p>
-        <a href="#">Kebijakan Privasi</a> | <a href="#">Syarat dan Ketentuan</a>
-    </footer>
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        // Set current date and time (24-hour format)
-        const currentDate = new Date();
-        const day = currentDate.toLocaleString('en-GB', { weekday: 'long' });
-        const date = currentDate.toLocaleString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' });
-        const time = currentDate.toLocaleString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false }); // 24-hour format
-
-        const dateTimeString = `${day}, ${date}, ${time}`;
-        document.getElementById('current-date-time').textContent = dateTimeString;
 
         var stockMovementChart = new Chart(document.getElementById('stockMovementChart').getContext('2d'), {
             type: 'line',
@@ -243,6 +231,16 @@
             }
         });
     </script>
+    @endsection
+
+    <!-- Footer
+    <footer class="footer">
+        <p>Company Name - 123 Address St, City, Country</p>
+        <a href="#">Kebijakan Privasi</a> | <a href="#">Syarat dan Ketentuan</a>
+    </footer> -->
+
+    
+    
 
 </body>
 </html>
