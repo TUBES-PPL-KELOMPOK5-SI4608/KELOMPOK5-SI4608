@@ -59,7 +59,7 @@
                 </a>
             </nav>
 
-            <div class="mt-auto space-y-2 pt-10 border-t border-white/30">
+            <div class="space-y-2 pt-10 border-t border-white/30">
                 <a href="#" class="block py-2 px-4 rounded hover:bg-[#FEBA17]">
                     👤 Profil
                 </a>
