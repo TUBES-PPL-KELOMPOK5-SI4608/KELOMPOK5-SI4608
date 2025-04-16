@@ -30,7 +30,7 @@
                 <a href="{{ route('dashboard-admin') }}" class="block py-2 px-4 rounded hover:bg-[#FEBA17] {{ request()->is('dashboard-admin') ? 'bg-[#FEBA17]' : '' }}">
                     🏠 Dashboard
                 </a>
-                <a href="#" class="block py-2 px-4 rounded hover:bg-[#FEBA17]">
+                <a href="{{ route('barang-masuk.index') }}" class="block py-2 px-4 rounded hover:bg-[#FEBA17]">
                     🔄 Pencatatan Keluar/Masuk
                 </a>
                 <a href="#" class="block py-2 px-4 rounded hover:bg-[#FEBA17]">
