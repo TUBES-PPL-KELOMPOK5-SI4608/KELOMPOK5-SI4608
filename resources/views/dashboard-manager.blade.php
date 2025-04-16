@@ -1,4 +1,4 @@
-@extends('components')
+@extends('components-admin')
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,130 +10,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <!-- Add Noto Sans font -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <!-- <style>
-        body {
-            font-family: 'Noto Sans', sans-serif;  /* Apply Noto Sans font */
-            background-color: #FBFAF5;  /* Set background color to FBFAF5 */
-        }
-        .sidebar {
-            width: 250px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            background-color: #74512D;
-            height: 100vh;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            padding-top: 50px;  /* Added padding to move sidebar items down */
-        }
-        .sidebar .nav-item a {
-            color: white;
-        }
-        .sidebar .nav-item a:hover {
-            background-color: #FEBA17;
-        }
-        .sidebar .nav-item.active a {
-            background-color: #FEBA17;
-        }
-        .sidebar .nav-item.profile, .sidebar .nav-item.settings, .sidebar .nav-item.logout {
-            margin-top: auto; /* Push these items to the bottom of the sidebar */
-        }
-        .header {
-            background-color: #74512D;
-            color: white;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 22px;  /* Reduced font size for "Welcome" */
-        }
-        .header .date-time {
-            font-size: 14px;
-        }
-        .header .notifications {
-            font-size: 22px;  /* Increased icon size */
-            cursor: pointer;
-        }
-        .main-content {
-            margin-left: 250px;
-            padding-top: 30px;
-        }
-        .card {
-            background-color: #E4E0E1;
-        }
-        .footer {
-            background-color: #74512D;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-        }
-        .footer a {
-            color: white;
-        }
-    </style> -->
 </head>
 <body>
-
-    <!-- Sidebar -->
-    <!-- <div class="sidebar">
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link active" href="{{ route('dashboard-manager') }}">
-                    <i class="fas fa-tachometer-alt"></i> Dashboard
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-couch"></i> Daftar Stok Furniture
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-sign-in-alt"></i> Pencatatan Masuk/Keluar
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-file-alt"></i> Laporan
-                </a>
-            </li> -->
-            <!-- Spacer for visual organization -->
-            <!-- <div style="flex-grow: 1;"></div> Push items below -->
-
-            <!-- <li class="nav-item profile">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-user"></i> Profil
-                </a>
-            </li>
-            <li class="nav-item settings">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-cogs"></i> Pengaturan
-                </a>
-            </li>
-            <li class="nav-item logout">
-                <a class="nav-link" href="{{ route('logout') }}">
-                    <i class="fas fa-sign-out-alt"></i> Logout
-                </a>
-            </li>
-        </ul>
-    </div> -->
-
-    <!-- Main Content -->
-    <!-- <div class="main-content"> -->
-        <!-- Header -->
-        <!-- <div class="header">
-            <h1>Welcome, {{ Auth::user()->name }}</h1>
-            <div>
-                <span class="date-time" id="current-date-time"></span>
-                <i class="fas fa-bell notifications"></i>
-            </div>
-        </div> -->
-
-        <!-- Data Summary -->
         @section('content')
         <div class="container mt-5">
             <h3>Data Summary</h3>
@@ -232,15 +110,6 @@
         });
     </script>
     @endsection
-
-    <!-- Footer
-    <footer class="footer">
-        <p>Company Name - 123 Address St, City, Country</p>
-        <a href="#">Kebijakan Privasi</a> | <a href="#">Syarat dan Ketentuan</a>
-    </footer> -->
-
-    
-    
 
 </body>
 </html>
