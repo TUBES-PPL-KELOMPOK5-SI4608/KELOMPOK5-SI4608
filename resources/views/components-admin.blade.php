@@ -31,6 +31,9 @@
                     🏠 Dashboard
                 </a>
                 <a href="#" class="block py-2 px-4 rounded hover:bg-[#FEBA17]">
+                    🔄 Pencatatan Keluar/Masuk
+                </a>
+                <a href="#" class="block py-2 px-4 rounded hover:bg-[#FEBA17]">
                     🔄 Kelola Data Furniture
                 </a>
                 <a href="#" class="block py-2 px-4 rounded hover:bg-[#FEBA17] {{ request()->is('barangs*') ? 'bg-[#FEBA17]' : '' }}">
