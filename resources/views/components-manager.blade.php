@@ -49,10 +49,10 @@
                     📉 Batas Stok Minimum
                 </a>
                 <a href="#" class="block py-2 px-4 rounded hover:bg-[#FEBA17]">
-                    ✅ Audit
+                    🏭 Data Supplier
                 </a>
                 <a href="#" class="block py-2 px-4 rounded hover:bg-[#FEBA17]">
-                    🏭 Data Supplier
+                    ✅ Audit
                 </a>
                 <a href="#" class="block py-2 px-4 rounded hover:bg-[#FEBA17]">
                     📊 Laporan
@@ -60,9 +60,6 @@
             </nav>
 
             <div class="space-y-2 pt-10 border-t border-white/30">
-                <a href="#" class="block py-2 px-4 rounded hover:bg-[#FEBA17]">
-                    👤 Profil
-                </a>
                 <a href="#" class="block py-2 px-4 rounded hover:bg-[#FEBA17]">
                     ⚙️ Pengaturan
                 </a>
@@ -99,9 +96,26 @@
 
     <!-- Script Waktu -->
     <script>
-        const currentDate = new Date();
-        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
-        document.getElementById('current-date-time').textContent = currentDate.toLocaleDateString('id-ID', options);
-    </script>
+    function updateTime() {
+        const now = new Date();
+        const options = {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        };
+        document.getElementById('current-date-time').textContent = now.toLocaleDateString('id-ID', options);
+    }
+
+    // Jalankan pertama kali
+    updateTime();
+
+    // Update setiap detik
+    setInterval(updateTime, 1000);
+</script>
+
 </body>
 </html>
