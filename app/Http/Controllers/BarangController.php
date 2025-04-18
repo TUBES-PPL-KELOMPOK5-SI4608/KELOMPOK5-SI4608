@@ -55,7 +55,7 @@ class BarangController extends Controller
     // Tampilkan detail satu barang
     public function show($id)
     {
-        $barang = Barang::findOrFail($id);
+        $barang = Barang::with('barangMasuks')->findOrFail($id);
         return view('barangs.show', compact('barang'));
     }
 

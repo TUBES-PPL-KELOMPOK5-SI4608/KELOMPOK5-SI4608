@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\BarangMasuk;
+use App\Models\Barang;
 
 class BarangMasukController extends Controller
 {

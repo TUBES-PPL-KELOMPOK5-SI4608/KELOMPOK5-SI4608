@@ -27,8 +27,8 @@ Route::post('/login',[AuthController::class, 'login']);
 Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
 Route::get('/dashboard-manager', [DashboardController::class, 'indexManager'])->name('dashboard-manager');
 Route::get('/dashboard-admin', [DashboardController::class, 'indexAdmin'])->name('dashboard-admin');
-// Route::resource('barangs', BarangController::class);
-// Route::get('/barangs', [BarangController::class, 'brangs.index'])->name('index');
+Route::resource('barangs', BarangController::class);
+// Route::get('/barangs', [BarangController::class, 'barangs.index'])->name('index');
 Route::resource('furnitures', FurnitureController::class);
 Route::resource('barang-masuk', BarangMasukController::class);
 Route::get('/', function () {

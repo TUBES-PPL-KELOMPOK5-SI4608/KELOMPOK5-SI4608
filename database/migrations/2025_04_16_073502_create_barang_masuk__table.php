@@ -15,6 +15,7 @@ class CreateBarangMasukTable extends Migration
     {
         Schema::create('barang_masuk', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_barang');
             $table->unsignedBigInteger('barang_id'); // Foreign key ke tabel barang
             $table->integer('jumlah_masuk');
             $table->date('tanggal_masuk');
