@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
 <div class="max-w-6xl mx-auto px-6 py-8">
@@ -61,10 +61,10 @@
                     <a href="{{ route('barangs.edit', $barang->id) }}" class="text-sm bg-yellow-400 text-white px-3 py-1 rounded hover:bg-yellow-500">
                         ✏️ Edit
                     </a>
-                    <form action="{{ route('barangs.destroy', $barang->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus barang ini?')">
+                    <form data-barang-id="{{ $barang->id }}" class="form-hapus-barang">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="text-sm bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
+                        <button type="button" class="btn-hapus text-sm bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
                             🗑️ Hapus
                         </button>
                     </form>
@@ -73,4 +73,38 @@
         @endforeach
     </div>
 </div>
+<!-- Modal Konfirmasi -->
+<div id="modal-konfirmasi" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 hidden">
+    <div class="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full">
+        <h2 class="text-lg font-semibold text-gray-800 mb-4">Konfirmasi Penghapusan</h2>
+        <p class="text-gray-600 mb-6">Apakah Anda yakin ingin menghapus barang ini?</p>
+        <div class="flex justify-end gap-3">
+            <button id="batal-btn" class="px-4 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400">Batal</button>
+            <form id="form-konfirmasi" method="POST" class="inline">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700">Hapus</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    const modal = document.getElementById('modal-konfirmasi');
+    const formKonfirmasi = document.getElementById('form-konfirmasi');
+    const batalBtn = document.getElementById('batal-btn');
+
+    document.querySelectorAll('.btn-hapus').forEach(button => {
+        button.addEventListener('click', function () {
+            const form = this.closest('.form-hapus-barang');
+            const action = form.getAttribute('action') || `/barangs/${form.dataset.barangId}`;
+            formKonfirmasi.setAttribute('action', action);
+            modal.classList.remove('hidden');
+        });
+    });
+
+    batalBtn.addEventListener('click', () => {
+        modal.classList.add('hidden');
+        formKonfirmasi.setAttribute('action', '');
+    });
+</script>
 @endsection

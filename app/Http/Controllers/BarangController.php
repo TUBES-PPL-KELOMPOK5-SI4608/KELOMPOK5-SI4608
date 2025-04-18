@@ -40,16 +40,21 @@ class BarangController extends Controller
     // Simpan barang baru
     public function store(Request $request)
     {
-        $request->validate([
-            'nama_barang' => 'required',
-            'kategori' => 'nullable',
-            'stok' => 'required|integer',
-            'harga' => 'required|numeric',
-        ]);
-
-        Barang::create($request->except('_token'));
-
-        return redirect()->route('barangs.index')->with('success', 'Barang berhasil ditambahkan!');
+        $barangData = $request->input('barang');
+    
+        foreach ($barangData as $data) {
+            // Validasi tiap barang
+            $validated = \Validator::make($data, [
+                'nama_barang' => 'required',
+                'kategori' => 'nullable',
+                'stok' => 'required|integer',
+                'harga' => 'required|numeric',
+            ])->validate();
+    
+            Barang::create($validated);
+        }
+    
+        return redirect()->route('barangs.index')->with('success', 'Semua barang berhasil ditambahkan!');
     }
 
     // Tampilkan detail satu barang
